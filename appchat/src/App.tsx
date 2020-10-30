@@ -2,12 +2,15 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import LoginModal from './Login'
-
+import ChatThread from './ChatThread'
+import NewChatThread from './NewChatThread'
 
 function App() {
 
   return (
-    <LoginModal refetch={() => { }} />
+    <NewChatThread refetch={() => { }} />
+    //<ChatThread refetch={() => { }} />
+  //<LoginModal refetch={() => { }} />
 
     // <div className="App">
     //   <header className="App-header">
