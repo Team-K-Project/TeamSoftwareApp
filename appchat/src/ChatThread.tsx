@@ -32,13 +32,13 @@ export default function ChatThread(props: Props) {
             <div style={{textAlign: 'center', maxWidth: 1500, minWidth: 1000, minHeight: 500, borderStyle:'solid', borderRadius: 10, borderColor:'black', borderWidth: 2, marginTop: 30 }}>
                 <div style={{ textAlign: 'left', maxWidth: 900, minWidth: 500, marginLeft: 10}}>    
                     <Title level={5}>/Thread Name</Title>
-                    <Title level={3}>This will be the thread post title</Title>
+                    <Title level={3}>This will be the threadhhhhhhhhhhhhhhhh post title</Title>
                 </div>
                 <div style={{ textAlign: 'center', maxWidth: 900, minWidth: 500, borderTop: 2}}>
                     <Title level={2}></Title>
                     <List
                     size="small"
-                     header={<div>This will display original post message</div>}
+                     header={<div>This will displayhhhhhhhhhhhh original post message</div>}
                     // footer={<div>Footer</div>}
                      bordered
                     dataSource={subChats()}
