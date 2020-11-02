@@ -39,7 +39,8 @@ export default function LoginModal(props: Props) {
 
         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
             <div style={{ textAlign: 'center', maxWidth: 700, minWidth: 500 }}>
-                <Title level={1}>Login</Title>
+                <Title level={1}>App Chat Forum</Title>
+                <Title level={2}>Login</Title>
                 <Form
                     name="basic"
                     initialValues={{
@@ -92,7 +93,7 @@ export default function LoginModal(props: Props) {
                 {divider()}
 
                 <Button onClick={() => {
-                    <ExplorePage refetch={props.refetch} history={History} />
+                    // <ExplorePage refetch={props.refetch} history={History} />
                 }}>
                     bypass
                 </Button>
