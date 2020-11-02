@@ -28,7 +28,8 @@ export default function Routes(props: Props) {
                         exact
                         component={(props2: RouteComponentProps<{}>) => {
                             return <>
-                                <ExplorePage history={props2.history} refetch={props.refetch} />
+                                <ExplorePage />
+                                {/* //history={props2.history} refetch={props.refetch} /> */}
                             </>
                         }
                         }

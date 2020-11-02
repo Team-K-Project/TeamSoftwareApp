@@ -23,11 +23,7 @@ function divider() {
 }
 
 export default function LoginModal(props: Props) {
-    // const [requestPasswordReset] = useMutation<RequestPasswordReset, RequestPasswordResetVariables>(REQUEST_PASSWORD_RESET)
     const [reset, setReset] = useState<boolean>(false)
-    const [fail, setFail] = useState<boolean>(false)
-    const [email, setEmail] = useState<string>('')
-    // const [authenticate] = useMutation<Authenticate, AuthenticateVariables>(AUTHENTICATE)
 
     const onFinish = async (values: any) => {
     };
@@ -73,7 +69,6 @@ export default function LoginModal(props: Props) {
                     >
                         <Input.Password placeholder='Password' />
                     </Form.Item>
-                    {fail && <div style={{ color: 'red' }}>Please enter correct email and password</div>}
                     <Form.Item style={{ marginBottom: 5 }}>
                         <Button style={{ marginTop: 3, marginRight: 5 }} type="primary" htmlType="submit" onClick={() => {
                         }}>
@@ -92,16 +87,12 @@ export default function LoginModal(props: Props) {
                 {divider()}
 
                 <Button onClick={() => {
-                    <ExplorePage refetch={props.refetch} history={History} />
+                    // return <ExplorePage />
                 }}>
                     bypass
                 </Button>
 
                 <div >
-
-
-                    {(reset && (email.length > 0)) && <div>Sent reset password to {email}</div>}
-
                 </div>
             </div>
         </div >
