@@ -26,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "codegen": "apollo client:codegen --endpoint https://waldo-dev.herokuapp.com/graphql --target typescript --outputFlat src/generated --excludes=node_modules/* --includes=src/**/*.tsx && echo \"export default {}\" >> src/generated/globalTypes.ts",
+    "lint": "yarn run tsc && eslint --ext .js,.jsx,.ts,.tsx ./ --max-warnings=0"
   },
   "eslintConfig": {
     "extends": "react-app"
