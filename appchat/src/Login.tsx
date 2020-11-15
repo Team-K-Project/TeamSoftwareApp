@@ -24,7 +24,6 @@ function divider() {
 
 export default function LoginModal(props: Props) {
     const [reset, setReset] = useState<boolean>(false)
-
     const onFinish = async (values: any) => {
     };
     const onFinishFailed = (errorInfo: any) => {
