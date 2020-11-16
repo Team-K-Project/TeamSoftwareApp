@@ -8,8 +8,8 @@ import NewChatThread from './NewChatThread'
 function App() {
 
   return (
-    <NewChatThread refetch={() => { }} />
-    //<ChatThread refetch={() => { }} />
+    //<NewChatThread refetch={() => { }} />
+    <ChatThread refetch={() => { }} />
   //<LoginModal refetch={() => { }} />
 
     // <div className="App">

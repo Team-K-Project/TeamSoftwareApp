@@ -29,12 +29,22 @@ export default function ChatThread(props: Props) {
     }
     return <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'left', flexDirection: 'column', alignItems: 'left' }}>
+                <Form.Item style={{ marginTop: 1 }}>
+                        <Button style={{ marginTop: 1, marginLeft: 0 }} type="primary" htmlType="submit" onClick={() => {
+                        }}>
+                            Home
+                        </Button>
+                </Form.Item>
+                <Title level={5}>/Thread Name</Title>
+            </div>
+        
             <div style={{textAlign: 'center', maxWidth: 1500, minWidth: 1000, minHeight: 500, borderStyle:'solid', borderRadius: 10, borderColor:'black', borderWidth: 2, marginTop: 30 }}>
                 <div style={{ textAlign: 'left', maxWidth: 900, minWidth: 500, marginLeft: 10}}>    
-                    <Title level={5}>/Thread Name</Title>
-                    <Title level={3}>This will be the threadhhhhhhhhhhhhhhhh post title</Title>
+                    
+                    <Title level={3}>Post Title</Title>
                 </div>
-                <div style={{ textAlign: 'center', maxWidth: 900, minWidth: 500, borderTop: 2}}>
+                <div style={{ textAlign: 'center', maxWidth: 900, minWidth: 500, borderTop: 2, borderStyle: 'solid', borderLeft: 0, borderRight: 0, borderBottom: 0}}>
                     <Title level={2}></Title>
                     <List
                     size="small"
