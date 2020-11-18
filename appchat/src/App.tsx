@@ -6,10 +6,7 @@ import ExplorePage from './ExplorePage'
 import ChatThread from './ChatThread'
 import NewChatThread from './NewChatThread'
 import { Button } from 'antd'
-// <ExplorePage />
-// <NewChatThread refetch={() => { }} />
-// <ChatThread refetch={() => { }} />
-//<LoginModal refetch={() => { }} />
+
 function App() {
   const [login, setLogin] = useState<boolean>(false)
   const [explore, setExplore] = useState<boolean>(false)
