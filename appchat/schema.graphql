@@ -1,0 +1,17 @@
+type user {
+  name: String
+  id: Int
+  password: String
+}
+
+type message {
+  message:String
+  id:Int
+  kingId:Int 
+}
+type kingMessage {
+  kingMessage:String
+  id:Int
+  userId:Int 
+}
+

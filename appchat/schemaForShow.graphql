@@ -1,0 +1,92 @@
+directive @embedded on OBJECT
+directive @collection(name: String!) on OBJECT
+directive @index(name: String!) on FIELD_DEFINITION
+directive @resolver(
+  name: String
+  paginated: Boolean! = false
+) on FIELD_DEFINITION
+directive @relation(name: String) on FIELD_DEFINITION
+directive @unique(index: String) on FIELD_DEFINITION
+scalar Date
+
+type kingMessage {
+  kingMessage: String
+  _id: ID!
+  id: Int
+  userId: Int
+  _ts: Long!
+}
+
+input KingMessageInput {
+  kingMessage: String
+  id: Int
+  userId: Int
+}
+
+scalar Long
+
+type message {
+  kingId: Int
+  _id: ID!
+  id: Int
+  message: String
+  _ts: Long!
+}
+
+input MessageInput {
+  message: String
+  id: Int
+  kingId: Int
+}
+
+type Mutation {
+  updateUser(
+    id: ID!
+    data: UserInput!
+  ): user
+  createUser(data: UserInput!): user!
+  updateMessage(
+    id: ID!
+    data: MessageInput!
+  ): message
+  updateKingMessage(
+    id: ID!
+    data: KingMessageInput!
+  ): kingMessage
+  createMessage(data: MessageInput!): message!
+  deleteMessage(id: ID!): message
+  deleteUser(id: ID!): user
+  createKingMessage(data: KingMessageInput!): kingMessage!
+  deleteKingMessage(id: ID!): kingMessage
+}
+
+type Query {
+  findUserByID(id: ID!): user
+  findMessageByID(id: ID!): message
+  findKingMessageByID(id: ID!): kingMessage
+}
+
+scalar Time
+
+type user {
+  name: String
+  _id: ID!
+  id: Int
+  password: String
+  _ts: Long!
+}
+
+type User {
+  name: String
+  _id: ID!
+  id: Int
+  password: String
+  _ts: Long!
+}
+
+input UserInput {
+  name: String
+  id: Int
+  password: String
+}
+
