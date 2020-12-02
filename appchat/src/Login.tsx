@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Form, Input, Button, Modal } from 'antd';
 import Title from 'antd/lib/typography/Title';
 // import { useMutation } from '@apollo/react-hooks';
-import { History } from 'history'
+import { create, readAll } from './ConnectFauna'
 import ExplorePage from './ExplorePage';
 
 interface Props {
@@ -24,7 +24,14 @@ function divider() {
 
 export default function LoginModal(props: Props) {
     const [reset, setReset] = useState<boolean>(false)
+    const [name, setName] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
     const onFinish = async (values: any) => {
+        setName(values.username)
+        setPassword(values.password)
+        const dat = { username: name, password: password, id: 1 }
+        create(dat)
+        console.log(readAll)
     };
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
