@@ -3,12 +3,15 @@ import { Form, Input, Button, Modal } from 'antd';
 import Title from 'antd/lib/typography/Title';
 // import { useMutation } from '@apollo/react-hooks';
 import { create, readAll } from './ConnectFauna'
-import ExplorePage from './ExplorePage';
-
-interface Props {
-    refetch: () => void
+export interface User {
+    name: string
+    id: number
 }
-
+export interface createUser {
+    name: string
+    password: string
+    id: number
+}
 function divider() {
     return <div style={{
         height: 2,
@@ -22,16 +25,26 @@ function divider() {
     }} />
 }
 
-export default function LoginModal(props: Props) {
+
+export default function LoginModal() {
+    // async function readAllUsers() {
+    //     const users: User[] = []
+    //     const temp = await readAll()
+    //     temp.array.forEach((element: any) => {
+    //         element.then((value: any) => { users.push({ name: value.name || "", id: value.id || -1 }) });
+    //         users.push(element)
+    //     });
+    //     return users
+    // }
+    // const [users, setUsers] = useState<User[]>(await readAllUsers())
     const [reset, setReset] = useState<boolean>(false)
     const [name, setName] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const onFinish = async (values: any) => {
-        setName(values.username)
-        setPassword(values.password)
-        const dat = { username: name, password: password, id: 1 }
-        create(dat)
-        console.log(readAll)
+        const dat = { name: values.username || "", password: values.password || "", id: 3 || -1 }
+        console.log(dat)
+        await create(dat)
+        // console.log(readAll)
     };
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
@@ -82,22 +95,14 @@ export default function LoginModal(props: Props) {
                         </Button>
                     </Form.Item>
                     <Form.Item>
-                        {/* <Button type="link" htmlType="submit" onClick={async () => {
-                            setReset(true)
-                        }}
-                        >Reset Password</Button> */}
-                        <Modal title='Reset Password' visible={reset} onOk={() => { setReset(false) }} onCancel={() => { setReset(false) }} >
-                        </Modal>
                     </Form.Item>
                 </Form>
                 {divider()}
 
                 <Button onClick={() => {
-                    // return <ExplorePage />
                 }}>
                     bypass
                 </Button>
-
                 <div >
                 </div>
             </div>

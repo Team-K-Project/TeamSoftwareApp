@@ -9,7 +9,7 @@ console.log(process.env.FAUNADB_SECRET)
 
 exports.handler = (event, context, callback) => {
     console.log("Function `todo-read-all` invoked")
-    return client.query(q.Paginate(q.Match(q.Ref("indexes/all_todos"))))
+    return client.query(q.Paginate(q.Match(q.Ref("indexes/user"))))
         .then((response) => {
             const todoRefs = response.data
             console.log("Todo refs", todoRefs)

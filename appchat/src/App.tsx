@@ -38,7 +38,7 @@ function App() {
         setNewChatThread(true)
         setChat(false)
       }}> New Chat Thread</Button>
-      {login && <LoginModal refetch={() => { }} />}
+      {login && <LoginModal />}
       {explore && <ExplorePage />}
       {newChatThread && <NewChatThread refetch={() => { }} />}
       {chat && <ChatThread refetch={() => { }} />}
