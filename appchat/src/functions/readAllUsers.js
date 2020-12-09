@@ -1,15 +1,16 @@
 /* code from functions/todos-read-all.js */
 import faunadb from 'faunadb'
 
-const q = faunadb.query
-const client = new faunadb.Client({
-    secret: process.env.FAUNADB_SECRET
-})
-console.log(process.env.FAUNADB_SECRET)
 
-exports.handler = (event, context, callback) => {
+console.log(process.env.FAUNADB_SECRET)
+export function readAllUsers() {
+    // exports.handler = (event, context, callback) => {
+    const q = faunadb.query
+    const client = new faunadb.Client({
+        secret: "fnAD8pvoHbACA1p-UnO4ExkZBAGxaH0ws8NLsyNv"
+    })
     console.log("Function `todo-read-all` invoked")
-    return client.query(q.Paginate(q.Match(q.Ref("indexes/user"))))
+    return client.query(q.Paginate(q.Match(q.Ref("indexes/all_users"))))
         .then((response) => {
             const todoRefs = response.data
             console.log("Todo refs", todoRefs)
@@ -20,16 +21,17 @@ exports.handler = (event, context, callback) => {
             })
             // then query the refs
             return client.query(getAllTodoDataQuery).then((ret) => {
-                return callback(null, {
-                    statusCode: 200,
-                    body: JSON.stringify(ret)
-                })
+                return JSON.stringify(ret)
+                // callback(null, {
+                //     statusCode: 200,
+                //     body: JSON.stringify(ret)
+                // })
             })
         }).catch((error) => {
-            console.log("error", error)
-            return callback(null, {
-                statusCode: 400,
-                body: JSON.stringify(error)
-            })
+            // console.log("error", error)
+            // return callback(null, {
+            //     statusCode: 400,
+            //     body: JSON.stringify(error)
+            // })
         })
 }

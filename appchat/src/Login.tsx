@@ -37,19 +37,25 @@ export default function LoginModal() {
     //     return users
     // }
     // const [users, setUsers] = useState<User[]>(await readAllUsers())
-    const [reset, setReset] = useState<boolean>(false)
-    const [name, setName] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
+    const [id, setId] = useState<string>('')
     const onFinish = async (values: any) => {
         const dat = { name: values.username || "", password: values.password || "", id: 1 || -1 }
         console.log(dat)
         await create(dat)
-        // console.log(readAll)
+        // console.log(readAll())
     };
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
+    async function getNextId() {
+        let strin = await readAll()
+        const users: any[] = strin ? JSON.parse(strin) : ''
+        // let id = users[users.length].value.id
+        users.forEach(e => console.log(e.data.name, " "))
+        console.log(users)
 
+    }
+    getNextId()
     return <div style={{ display: 'flex', justifyContent: 'center' }}>
 
         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>

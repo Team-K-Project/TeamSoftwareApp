@@ -1,6 +1,8 @@
 /* Frontend code from src/utils/api.js */
 /* Api methods to call /functions */
 import { createUser } from './functions/createUser'
+import { readAllUsers } from './functions/readAllUsers'
+
 export const create = (data: any) => {
     return createUser({ body: JSON.stringify(data), method: 'POST' })
     // console.log(JSON.stringify(data), "HIII")
@@ -22,9 +24,10 @@ export const create = (data: any) => {
 //     })
 // }
 export const readAll = () => {
-    return fetch('./functions/readAllUsers').then((response) => {
-        return response.json()
-    })
+    return readAllUsers()
+    // return fetch('./functions/readAllUsers').then((response) => {
+    //     return response.json()
+    // })
 }
 
 // export default {
