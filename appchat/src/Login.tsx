@@ -41,7 +41,7 @@ export default function LoginModal() {
     const [name, setName] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const onFinish = async (values: any) => {
-        const dat = { name: values.username || "", password: values.password || "", id: 3 || -1 }
+        const dat = { name: values.username || "", password: values.password || "", id: 1 || -1 }
         console.log(dat)
         await create(dat)
         // console.log(readAll)
