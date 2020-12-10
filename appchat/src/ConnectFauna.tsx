@@ -1,6 +1,7 @@
 /* Frontend code from src/utils/api.js */
 /* Api methods to call /functions */
 import { createUser } from './functions/createUser'
+import {CreateKingMessage} from './functions/createKingMessage'
 export const create = (data: any) => {
     return createUser({ body: JSON.stringify(data), method: 'POST' })
     // console.log(JSON.stringify(data), "HIII")
@@ -11,7 +12,9 @@ export const create = (data: any) => {
     //     return response.json()
     // })
 }
-
+export const createKingMessage = (data:any) => {
+    return CreateKingMessage({ body: JSON.stringify(data), method: 'POST' })
+}
 // export function create(data: any) {
 //     console.log(JSON.stringify(data), "HIII")
 //     const response = fetch('./functions/createUser', {

@@ -40,7 +40,7 @@ function App() {
       }}> New Chat Thread</Button>
       {login && <LoginModal />}
       {explore && <ExplorePage />}
-      {newChatThread && <NewChatThread refetch={() => { }} />}
+      {newChatThread && <NewChatThread/>}
       {chat && <ChatThread refetch={() => { }} />}
 
     </div>
