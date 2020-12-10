@@ -53,7 +53,6 @@ export default function LoginModal() {
         // let id = users[users.length].value.id
         users.forEach(e => console.log(e.data.name, " "))
         console.log(users)
-
     }
     getNextId()
     return <div style={{ display: 'flex', justifyContent: 'center' }}>
