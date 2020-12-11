@@ -3,14 +3,14 @@ import faunadb from 'faunadb'
 
 
 console.log(process.env.FAUNADB_SECRET)
-export function readAllUsers() {
+export function ReadAllMessages() {
     // exports.handler = (event, context, callback) => {
     const q = faunadb.query
     const client = new faunadb.Client({
         secret: "fnAD8pvoHbACA1p-UnO4ExkZBAGxaH0ws8NLsyNv"
     })
     console.log("Function `todo-read-all` invoked")
-    return client.query(q.Paginate(q.Match(q.Ref("indexes/all_users"))))
+    return client.query(q.Paginate(q.Match(q.Ref("indexes/all_messages"))))
         .then((response) => {
             const todoRefs = response.data
             // create new query out of todo refs. http://bit.ly/2LG3MLg

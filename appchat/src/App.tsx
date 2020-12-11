@@ -7,12 +7,14 @@ import ChatThread from './ChatThread'
 import NewChatThread from './NewChatThread'
 import { Button } from 'antd'
 import AllUsers from './AllUsers'
+import { KingMessage } from './ExplorePage'
 function App() {
   const [login, setLogin] = useState<boolean>(false)
   const [explore, setExplore] = useState<boolean>(false)
   const [chat, setChat] = useState<boolean>(false)
   const [newChatThread, setNewChatThread] = useState<boolean>(true)
   const [allUsers, setAllUsers] = useState<boolean>(false)
+  const [vals, setVals] = useState<KingMessage>({ kingMessage: "", id: -1, userId: -1 })
   return (
     <div style={{ textAlign: 'center' }}>
       <Button style={{ marginTop: 3, marginRight: 5 }} type="primary" htmlType="submit" onClick={() => {
@@ -32,13 +34,6 @@ function App() {
       <Button style={{ marginTop: 3, marginRight: 5 }} type="primary" htmlType="submit" onClick={() => {
         setLogin(false)
         setExplore(false)
-        setNewChatThread(false)
-        setChat(true)
-        setAllUsers(false)
-      }}> Chat Thread</Button>
-      <Button style={{ marginTop: 3, marginRight: 5 }} type="primary" htmlType="submit" onClick={() => {
-        setLogin(false)
-        setExplore(false)
         setNewChatThread(true)
         setChat(false)
         setAllUsers(false)
@@ -51,9 +46,9 @@ function App() {
         setAllUsers(true)
       }}> All users</Button>
       {login && <LoginModal />}
-      {explore && <ExplorePage />}
+      {explore && <ExplorePage visible={explore} setVisible={(val) => { setExplore(val); setChat(true) }} setVals={(val) => { setVals(val) }} />}
+      {chat && <ChatThread message={vals} />}
       {newChatThread && <NewChatThread refetch={() => { }} />}
-      {chat && <ChatThread refetch={() => { }} />}
       {allUsers && <AllUsers />}
 
     </div>

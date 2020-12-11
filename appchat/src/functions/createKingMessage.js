@@ -5,7 +5,7 @@ import faunadb from 'faunadb'
 console.log(process.env.FAUNADB_SECRET)
 console.log("MADE IT TO createUser.js")
 // exports.handler = async (event, context, callback) => {
-export async function createUser(event, context, callback) {
+export async function CreateKingMessage(event, context, callback) {
     const q = faunadb.query
     const client = new faunadb.Client({
         secret: 'fnAD8pvoHbACA1p-UnO4ExkZBAGxaH0ws8NLsyNv'
@@ -16,7 +16,7 @@ export async function createUser(event, context, callback) {
     const todoItem = {
         data: data
     }
-    return client.query(q.Create(q.Ref("classes/user"), todoItem))
+    return client.query(q.Create(q.Ref("classes/kingMessage"), todoItem))
         .then((response) => {
             console.log("success", response)
             /* Success! return the response with statusCode 200 */
