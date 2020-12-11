@@ -16,7 +16,7 @@ export async function CreateMessage(event, context, callback) {
     const todoItem = {
         data: data
     }
-    return client.query(q.Create(q.Ref("classes/kingMessage"), todoItem))
+    return client.query(q.Create(q.Ref("classes/message"), todoItem))
         .then((response) => {
             console.log("success", response)
             /* Success! return the response with statusCode 200 */

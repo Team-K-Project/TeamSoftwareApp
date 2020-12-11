@@ -15,9 +15,11 @@ interface Props {
 export default function NewChatThread(props: Props) {
     const [message, setMessage] = useState<string>()
     const onFinish = async (values: any) => {
-        const dat = { name: values.message || "", id: 4, userId: 1 }
+        const dat = { kingMessage: values.message || "", id: 4, userId: 1 }
         console.log(dat)
         await createKingMessage(dat)
+        window.location.reload(true);
+
         // console.log(readAll())
     };
 
@@ -45,11 +47,14 @@ export default function NewChatThread(props: Props) {
                         >
                             <Input style={{ width: 400 }} placeholder='message' />
                         </Form.Item>
-                    </Form>
-                    <Button style={{ marginTop: 3, marginRight: 5 }} type="primary" htmlType="submit" onClick={() => {
-                    }}>
-                        Post
+                        <Form.Item style={{ marginBottom: 5 }}>
+                            <Button style={{ marginTop: 3, marginRight: 5 }} type="primary" htmlType="submit" onClick={() => {
+                            }}>
+                                Post
                         </Button>
+                        </Form.Item >
+                    </Form>
+
                 </div>
             </div>
         </div>

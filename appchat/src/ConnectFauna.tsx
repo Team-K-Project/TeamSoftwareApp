@@ -12,7 +12,7 @@ export const createMessage = (data: any) => {
     return CreateMessage({ body: JSON.stringify(data), methdod: 'POST' })
 }
 export const createKingMessage = async (data: any) => {
-    return await CreateKingMessage({ body: JSON.stringify(data), method: 'POST' }).catch(err => console.log(err))
+    return await CreateKingMessage({ body: JSON.stringify(data), method: 'POST' })
 }
 export const readAllKingMessages = () => {
     return ReadAllKingMessages()

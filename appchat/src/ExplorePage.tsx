@@ -35,11 +35,11 @@ export default function ExplorePage(props: Props) {
         // let id = users[users.length].value.id
         users.forEach(e => { str.push({ kingMessage: e.data.kingMessage || '', id: e.data.id || - 1, userId: e.data.userId || -1 }); })
         setMess(str)
-        // console.log(users)
+        console.log(users)
     }
     count && getNextId()
-    console.log(str, "SSTTTRRRR")
-    console.log(str, "HIIII")
+    console.log(mess, "SSTTTRRRR")
+    console.log(mess, "HIIII")
     console.log(mess[0])
     return <div style={{ textAlign: 'center', maxWidth: 500, alignContent: 'center', alignItems: 'center', marginLeft: 400 }}>
         Top Chats
