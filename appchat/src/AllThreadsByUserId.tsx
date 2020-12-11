@@ -60,7 +60,7 @@ export default function AllThreadsByUserId(props: Props) {
                 />
             </div>
         }{
-            (thread && message) && <ChatThread message={message} user={props?.user} />
+            (thread && message) && <ChatThread message={message} user={props?.user} setVisible={(val) => { setThread(val) }} />
         }
     </div>
 }

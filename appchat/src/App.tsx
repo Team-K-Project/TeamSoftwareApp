@@ -48,7 +48,7 @@ function App() {
       {console.log(user)}
       {login && <LoginModal isVisible={(val) => { setLogin(false); setExplore(true) }} success={(user) => setUser(user)} />}
       {explore && <ExplorePage user={user} visible={explore} setVisible={(val) => { setExplore(val); setChat(true) }} setVals={(val) => { setVals(val) }} />}
-      {chat && <ChatThread message={vals} user={user} />}
+      {chat && <ChatThread message={vals} user={user} setVisible={(val) => setChat(val)} />}
       {newChatThread && <NewChatThread user={user} />}
       {allUsers && <AllUsers />}
 

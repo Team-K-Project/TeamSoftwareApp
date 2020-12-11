@@ -23,6 +23,9 @@ export default function ExplorePage(props: Props) {
     const str: any[] = []
     const [mess, setMess] = useState<KingMessage[]>([])
     const [count, setCount] = useState<boolean>(true)
+    const [open, setOpen] = useState<boolean>(false)
+    const [messa, setMessa] = useState<KingMessage>()
+
     async function getNextId() {
         setCount(false)
         let strin = await readAllKingMessages()
@@ -47,7 +50,7 @@ export default function ExplorePage(props: Props) {
             },
             {
                 title: 'Message: ',
-                render: (data: KingMessage) => <div style={{ textAlign: 'left', marginBottom: 5 }}><Button onClick={() => { console.log(data); return <ChatThread message={data} user={props?.user} /> }} >open</Button>    {data.kingMessage} {divider()}</div>,
+                render: (data: KingMessage) => <div style={{ textAlign: 'left', marginBottom: 5 }}><Button onClick={() => { console.log(data); setOpen(true); setMessa(data) }} >open</Button>    {data.kingMessage} {divider()}</div>,
                 getValue: (data: KingMessage) => data.kingMessage || ''
             }
         ]
@@ -56,16 +59,21 @@ export default function ExplorePage(props: Props) {
 
     return <div style={{ textAlign: 'left', maxWidth: 500, alignContent: 'left', alignItems: 'left', marginLeft: 200 }}>
         Top Chats
-        <Table columns={columns} dataSource={mess || []}
-            onRow={(data: KingMessage) => {
-                return {
-                    onClick: () => {
-                        props.setVals(data)
-                        props.setVisible(false)
-                    }
-                };
-            }}
-            rowKey={(w: KingMessage) => w.id}
-        />
+        <div>
+            {!open && <Table columns={columns} dataSource={mess || []}
+                onRow={(data: KingMessage) => {
+                    return {
+                        onClick: () => {
+                            props.setVals(data)
+                            props.setVisible(false)
+                        }
+                    };
+                }}
+                rowKey={(w: KingMessage) => w.id}
+            />}
+        </div>
+        <div>
+            {(open && messa) && <ChatThread message={messa} user={props?.user} setVisible={(val) => { setOpen(val) }} />}
+        </div>
     </div>
 }

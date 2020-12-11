@@ -8,6 +8,7 @@ import { User } from './Login'
 interface Props {
     message: KingMessage
     user: User | undefined
+    setVisible: (val: boolean) => void
 }
 interface Message {
     mess: string
@@ -42,6 +43,7 @@ export default function ChatThread(props: Props) {
         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
             <div style={{ textAlign: 'center', maxWidth: 1500, minWidth: 1000, minHeight: 500, borderStyle: 'solid', borderRadius: 10, borderColor: 'black', borderWidth: 2, marginTop: 30 }}>
                 <div style={{ textAlign: 'left', maxWidth: 900, minWidth: 500, marginLeft: 10 }}>
+                    <Button onClick={() => { props.setVisible(false) }}>Back</Button>
                     <Title level={5} style={{ textAlign: 'center' }}>{props.user?.name}</Title>
                 </div>
                 <div style={{ textAlign: 'center', maxWidth: 900, minWidth: 500, borderTop: 2 }}>
