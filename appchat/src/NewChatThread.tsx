@@ -2,25 +2,35 @@ import React, { useState } from 'react'
 import { Form, Input, Button, Modal, List } from 'antd';
 import Title from 'antd/lib/typography/Title';
 // import { useMutation } from '@apollo/react-hooks';
-import { createKingMessage } from './ConnectFauna'
+import { createKingMessage, readAllKingMessages } from './ConnectFauna'
+import { User } from './Login'
 
 interface Props {
     // history: History
     // messageId:number
-    refetch: () => void
+    user: User | undefined
 }
 
 
 
 export default function NewChatThread(props: Props) {
     const [message, setMessage] = useState<string>()
+    const [mess, setMess] = useState<string[]>([])
+    const [count, setCount] = useState<boolean>(true)
+    const [messId, setMessId] = useState<number>()
+    async function getNextId() {
+        setCount(false)
+        const str: string[] = []
+        let strin = await readAllKingMessages()
+        const messages: any[] = strin ? JSON.parse(strin) : ''
+        messages.forEach(w => { w && setMessId(w.data.id + 1) })
+        console.log(mess)
+    }
+    count && getNextId()
     const onFinish = async (values: any) => {
-        const dat = { kingMessage: values.message || "", id: 4, userId: 1 }
+        const dat = { kingMessage: values.message || "", id: messId, userId: props?.user?.id || 1, name: props?.user?.name || '' }
         console.log(dat)
         await createKingMessage(dat)
-        window.location.reload(true);
-
-        // console.log(readAll())
     };
 
     return <div style={{ display: 'flex', justifyContent: 'center' }}>
