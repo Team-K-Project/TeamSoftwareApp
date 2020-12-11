@@ -83,9 +83,11 @@ export default function LoginModal(props: Props) {
 
         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
             <div style={{ textAlign: 'center', maxWidth: 700, minWidth: 500 }}>
-                <div>{login ? 'Sign Up?' : 'Sign in '}<Button style={{ marginTop: 50 }} onClick={() => {
-                    login ? setLogin(false) : setLogin(true)
-                }}>{login ? 'register' : 'login'}</Button></div>
+                <div style={{ textAlign: 'right' }}>{login ? 'Sign Up?' : 'Sign in '}
+                    <Button style={{ marginTop: 50 }} onClick={() => {
+                        login ? setLogin(false) : setLogin(true)
+                    }}>{login ? 'register' : 'login'}</Button>
+                </div>
                 <Form
                     name="basic"
                     initialValues={{

@@ -26,14 +26,14 @@ export default function ChatThread(props: Props) {
         const str: string[] = []
         let strin = await readAllMessages()
         const messages: any[] = strin ? JSON.parse(strin) : ''
-        messages.forEach(w => { w && setMessId(w.data.id + 1) })
-        messages.forEach(e => (e.data.kingMessageId == props.message.id) && str.push(e.data.username + " : " + e.data.message))
+        messages.forEach(w => { w && setMessId(w.data.kingMessageId + 1) })
+        messages.forEach(e => { (e.data.kingMessageId == props.message.id) && str.push(e.data.username + " : " + e.data.message); console.log(e.data.kingMessageId, props.message.id) })
         setMess(str)
         console.log(mess)
     }
     count && getNextId()
     const onFinish = async (values: any) => {
-        const dat = { message: values.message || "", id: messId || 1, kingMessageId: props.message.id, username: props.user?.name || '' }
+        const dat = { message: values.message || "", userId: messId || 1, id: props.message.id, username: props.user?.name || '' }
         console.log(dat)
         await createMessage(dat)
         setCount(true)

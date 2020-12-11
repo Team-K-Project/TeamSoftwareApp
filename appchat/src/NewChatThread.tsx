@@ -23,12 +23,13 @@ export default function NewChatThread(props: Props) {
         const str: string[] = []
         let strin = await readAllKingMessages()
         const messages: any[] = strin ? JSON.parse(strin) : ''
-        messages.forEach(w => { w && setMessId(w.data.id + 1) })
+        messages.forEach(w => { w && setMessId(w.data.kingMessageId + 1) })
+        console.log(messId)
         console.log(mess)
     }
     count && getNextId()
     const onFinish = async (values: any) => {
-        const dat = { kingMessage: values.message || "", id: messId, userId: props?.user?.id || 1, name: props?.user?.name || '' }
+        const dat = { kingMessage: values.message || "", userId: props?.user?.id || -1, kingMessageId: messId || 10, name: props?.user?.name || '' }
         console.log(dat)
         await createKingMessage(dat)
     };
