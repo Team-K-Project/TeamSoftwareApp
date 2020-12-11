@@ -33,7 +33,7 @@ export default function ChatThread(props: Props) {
     }
     count && getNextId()
     const onFinish = async (values: any) => {
-        const dat = { message: values.message || "", userId: messId || 1, id: props.message.id, username: props.user?.name || '' }
+        const dat = { message: values.message || "", userId: messId || 1, kingMessageId: props.message.id, username: props.user?.name || '' }
         console.log(dat)
         await createMessage(dat)
         setCount(true)
